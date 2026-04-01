@@ -16,7 +16,7 @@
     <link href="css/contextMenu.css" rel="stylesheet" />
 </head>
 
-<body class="bg-cover bg-center" style="background-image: url('js/memeos-desktopbg.jpg')">
+<body class="memeos-theme">
     <div id="boot-screen" class="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950 text-green-400">
         <div class="boot-panel w-[92%] max-w-3xl rounded-xl border border-green-500/40 bg-black/80 p-6 font-mono shadow-2xl">
             <div class="mb-4 flex items-center justify-between text-xs uppercase tracking-[0.35em] text-green-300">
@@ -157,6 +157,15 @@
             <div class="start-menu-section">
                 <p class="start-menu-section-title">Pinned Chaos</p>
                 <div id="start-menu-apps" class="start-menu-apps"></div>
+            </div>
+            <div class="start-menu-section">
+                <p class="start-menu-section-title">Theme Modes</p>
+                <div id="theme-mode-buttons" class="theme-mode-buttons">
+                    <button class="theme-mode-btn" data-theme="classic">Classic MemeOS</button>
+                    <button class="theme-mode-btn" data-theme="exam-panic">Exam Panic</button>
+                    <button class="theme-mode-btn" data-theme="chaos">Chaos Mode</button>
+                    <button class="theme-mode-btn" data-theme="night-grind">Night Grind</button>
+                </div>
             </div>
             <div class="start-menu-section">
                 <p class="start-menu-section-title">Quick Actions</p>

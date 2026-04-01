@@ -1,7 +1,181 @@
 /* MemeOS custom tweaks */
+:root {
+  --desktop-bg:
+    radial-gradient(circle at 14% 14%, rgba(250, 204, 21, 0.42), transparent 18%),
+    radial-gradient(circle at 82% 10%, rgba(244, 63, 94, 0.28), transparent 20%),
+    radial-gradient(circle at 82% 84%, rgba(59, 130, 246, 0.28), transparent 22%),
+    linear-gradient(135deg, #0b1020 0%, #111827 38%, #1f2937 100%);
+  --desktop-grid-opacity: 0.22;
+  --desktop-overlay-opacity: 0.62;
+  --desktop-accent-glow:
+    radial-gradient(circle at 8% 86%, rgba(34, 197, 94, 0.26), transparent 18%),
+    radial-gradient(circle at 54% 28%, rgba(168, 85, 247, 0.22), transparent 20%),
+    radial-gradient(circle at 92% 80%, rgba(14, 165, 233, 0.22), transparent 16%);
+  --icon-hover-bg: rgba(255, 255, 255, 0.2);
+  --icon-hover-ring: rgba(255, 255, 255, 0.12);
+  --icon-text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95);
+  --taskbar-bg: linear-gradient(180deg, rgba(17, 24, 39, 0.88), rgba(2, 6, 23, 0.94));
+  --taskbar-border: rgba(255, 255, 255, 0.12);
+  --taskbar-shadow: rgba(2, 6, 23, 0.45);
+  --start-button-bg: linear-gradient(180deg, #facc15, #ea580c);
+  --start-button-bg-hover: linear-gradient(180deg, #fde047, #fb923c);
+  --start-menu-bg:
+    linear-gradient(180deg, rgba(8, 15, 32, 0.98), rgba(22, 32, 56, 0.97)),
+    radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), transparent 34%);
+  --start-menu-kicker: #fbbf24;
+  --panel-bg: rgba(30, 41, 59, 0.94);
+  --panel-hover: rgba(51, 65, 85, 1);
+  --panel-soft-border: rgba(255, 255, 255, 0.08);
+  --theme-btn-active: #f59e0b;
+  --boot-screen-bg: #020617;
+  --boot-panel-bg: rgba(0, 0, 0, 0.8);
+  --boot-panel-border: rgba(34, 197, 94, 0.4);
+  --boot-text: #4ade80;
+  --boot-kicker: #86efac;
+  --boot-progress-bg: linear-gradient(90deg, #22c55e, #06b6d4);
+  --login-screen-bg: rgba(0, 0, 0, 0.75);
+  --login-card-bg: #111827;
+  --login-card-border: #ffffff;
+  --login-title: #fcd34d;
+  --login-accent: #f472b6;
+  --login-button-bg: #a3e635;
+  --login-button-hover: #bef264;
+}
+
+body[data-theme="exam-panic"] {
+  --desktop-bg:
+    radial-gradient(circle at 16% 14%, rgba(248, 113, 113, 0.55), transparent 18%),
+    radial-gradient(circle at 82% 14%, rgba(249, 115, 22, 0.4), transparent 20%),
+    radial-gradient(circle at 84% 82%, rgba(245, 158, 11, 0.28), transparent 22%),
+    linear-gradient(135deg, #220909 0%, #4c0519 35%, #2b0a03 100%);
+  --desktop-grid-opacity: 0.16;
+  --desktop-overlay-opacity: 0.72;
+  --desktop-accent-glow:
+    radial-gradient(circle at 10% 84%, rgba(239, 68, 68, 0.35), transparent 16%),
+    radial-gradient(circle at 58% 30%, rgba(251, 146, 60, 0.28), transparent 20%),
+    radial-gradient(circle at 90% 78%, rgba(234, 179, 8, 0.2), transparent 16%);
+  --icon-hover-bg: rgba(248, 113, 113, 0.18);
+  --taskbar-bg: linear-gradient(180deg, rgba(69, 10, 10, 0.94), rgba(39, 14, 24, 0.94));
+  --start-button-bg: linear-gradient(180deg, #ef4444, #7f1d1d);
+  --start-button-bg-hover: linear-gradient(180deg, #fb7185, #b91c1c);
+  --start-menu-bg:
+    linear-gradient(180deg, rgba(69, 10, 10, 0.99), rgba(55, 6, 23, 0.97)),
+    radial-gradient(circle at top left, rgba(251, 113, 133, 0.18), transparent 32%);
+  --start-menu-kicker: #fda4af;
+  --panel-bg: rgba(88, 28, 28, 0.86);
+  --panel-hover: rgba(127, 29, 29, 0.98);
+  --theme-btn-active: #ef4444;
+  --boot-panel-border: rgba(248, 113, 113, 0.42);
+  --boot-text: #fca5a5;
+  --boot-kicker: #fdba74;
+  --boot-progress-bg: linear-gradient(90deg, #ef4444, #f97316);
+  --login-title: #fca5a5;
+  --login-accent: #fb7185;
+  --login-button-bg: #f97316;
+  --login-button-hover: #fb923c;
+}
+
+body[data-theme="chaos"] {
+  --desktop-bg:
+    radial-gradient(circle at 8% 12%, rgba(34, 211, 238, 0.52), transparent 18%),
+    radial-gradient(circle at 50% 16%, rgba(250, 204, 21, 0.24), transparent 18%),
+    radial-gradient(circle at 86% 14%, rgba(244, 114, 182, 0.46), transparent 20%),
+    radial-gradient(circle at 82% 86%, rgba(168, 85, 247, 0.38), transparent 22%),
+    linear-gradient(135deg, #050816 0%, #1e1b4b 38%, #172554 100%);
+  --desktop-grid-opacity: 0.3;
+  --desktop-overlay-opacity: 0.76;
+  --desktop-accent-glow:
+    radial-gradient(circle at 10% 86%, rgba(34, 197, 94, 0.3), transparent 16%),
+    radial-gradient(circle at 54% 34%, rgba(236, 72, 153, 0.3), transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.3), transparent 14%);
+  --icon-hover-bg: rgba(34, 211, 238, 0.18);
+  --taskbar-bg: linear-gradient(180deg, rgba(30, 27, 75, 0.94), rgba(15, 23, 42, 0.96));
+  --start-button-bg: linear-gradient(180deg, #22d3ee, #a855f7);
+  --start-button-bg-hover: linear-gradient(180deg, #67e8f9, #e879f9);
+  --start-menu-bg:
+    linear-gradient(180deg, rgba(17, 24, 39, 0.98), rgba(46, 16, 101, 0.97)),
+    radial-gradient(circle at top left, rgba(34, 211, 238, 0.18), transparent 30%);
+  --start-menu-kicker: #67e8f9;
+  --panel-bg: rgba(49, 46, 129, 0.66);
+  --panel-hover: rgba(67, 56, 202, 0.78);
+  --theme-btn-active: #22d3ee;
+  --boot-panel-border: rgba(103, 232, 249, 0.4);
+  --boot-text: #67e8f9;
+  --boot-kicker: #c084fc;
+  --boot-progress-bg: linear-gradient(90deg, #22d3ee, #a855f7);
+  --login-title: #67e8f9;
+  --login-accent: #a855f7;
+  --login-button-bg: #22d3ee;
+  --login-button-hover: #67e8f9;
+}
+
+body[data-theme="night-grind"] {
+  --desktop-bg:
+    radial-gradient(circle at 16% 18%, rgba(59, 130, 246, 0.24), transparent 18%),
+    radial-gradient(circle at 82% 18%, rgba(6, 182, 212, 0.2), transparent 20%),
+    radial-gradient(circle at 76% 82%, rgba(99, 102, 241, 0.18), transparent 20%),
+    linear-gradient(135deg, #01030a 0%, #020617 36%, #0f172a 100%);
+  --desktop-grid-opacity: 0.12;
+  --desktop-overlay-opacity: 0.72;
+  --desktop-accent-glow:
+    radial-gradient(circle at 14% 84%, rgba(14, 165, 233, 0.18), transparent 16%),
+    radial-gradient(circle at 62% 36%, rgba(59, 130, 246, 0.16), transparent 20%),
+    radial-gradient(circle at 88% 82%, rgba(6, 182, 212, 0.14), transparent 14%);
+  --taskbar-bg: linear-gradient(180deg, rgba(2, 6, 23, 0.92), rgba(15, 23, 42, 0.95));
+  --start-button-bg: linear-gradient(180deg, #1d4ed8, #0f172a);
+  --start-button-bg-hover: linear-gradient(180deg, #2563eb, #1e293b);
+  --start-menu-bg:
+    linear-gradient(180deg, rgba(2, 6, 23, 0.98), rgba(15, 23, 42, 0.96)),
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), transparent 30%);
+  --start-menu-kicker: #93c5fd;
+  --panel-bg: rgba(15, 23, 42, 0.92);
+  --panel-hover: rgba(30, 41, 59, 0.98);
+  --theme-btn-active: #3b82f6;
+  --boot-panel-border: rgba(96, 165, 250, 0.34);
+  --boot-text: #93c5fd;
+  --boot-kicker: #67e8f9;
+  --boot-progress-bg: linear-gradient(90deg, #3b82f6, #06b6d4);
+  --login-title: #93c5fd;
+  --login-accent: #38bdf8;
+  --login-button-bg: #2563eb;
+  --login-button-hover: #3b82f6;
+}
+
 body {
     user-select: none; /* Prevent selecting desktop icons by dragging */
     overflow: hidden;
+    margin: 0;
+    position: relative;
+    background: var(--desktop-bg);
+    background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: var(--desktop-grid-opacity);
+  mix-blend-mode: soft-light;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0 58%, rgba(2, 6, 23, 0.38) 100%),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.02) 0 12px,
+      rgba(255, 255, 255, 0) 12px 24px
+    );
+  opacity: var(--desktop-overlay-opacity);
 }
 
 .window {
@@ -55,7 +229,8 @@ body {
 }
 
 .desktop-icon:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--icon-hover-bg);
+  box-shadow: 0 0 0 1px var(--icon-hover-ring);
 }
 
 .desktop-icon img {
@@ -68,7 +243,7 @@ body {
   color: white;
   font-size: 11px;
   line-height: 1.2;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: var(--icon-text-shadow);
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -86,12 +261,23 @@ body {
 
 #desktop {
   padding-bottom: 3.5rem;
+  isolation: isolate;
+}
+
+#desktop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: var(--desktop-accent-glow);
 }
 
 #taskbar {
   backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(0, 0, 0, 0.65);
+  border-top: 1px solid var(--taskbar-border);
+  background: var(--taskbar-bg);
+  box-shadow: 0 -10px 30px var(--taskbar-shadow);
 }
 
 #taskbar-apps::-webkit-scrollbar {
@@ -105,12 +291,13 @@ body {
 .start-button {
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 6px;
-  background: linear-gradient(180deg, #374151, #111827);
+  background: var(--start-button-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .start-button:hover,
 .start-button.active {
-  background: linear-gradient(180deg, #4b5563, #1f2937);
+  background: var(--start-button-bg-hover);
 }
 
 .taskbar-app-button {
@@ -129,7 +316,7 @@ body {
   z-index: 1200;
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
-  background: rgba(17, 24, 39, 0.97);
+  background: var(--start-menu-bg);
   color: white;
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(8px);
@@ -146,7 +333,7 @@ body {
 .start-menu-kicker,
 .start-menu-section-title {
   margin: 0;
-  color: #67e8f9;
+  color: var(--start-menu-kicker);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.25em;
@@ -163,7 +350,7 @@ body {
   height: 38px;
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 6px;
-  background: rgba(31, 41, 55, 0.9);
+  background: var(--panel-bg);
   color: white;
   font-size: 28px;
   cursor: pointer;
@@ -192,7 +379,7 @@ body {
   padding: 12px;
   border: 2px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
-  background: rgba(31, 41, 55, 0.9);
+  background: var(--panel-bg);
   color: white;
   cursor: pointer;
   transition: transform 0.15s ease, background 0.15s ease;
@@ -200,7 +387,7 @@ body {
 
 .start-menu-app-item:hover,
 .start-action-btn:hover {
-  background: rgba(55, 65, 81, 0.95);
+  background: var(--panel-hover);
 }
 
 .start-menu-app-item img {
@@ -245,9 +432,84 @@ body {
   text-shadow: 0 0 10px rgba(34, 197, 94, 0.18);
 }
 
+.theme-mode-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.theme-mode-btn {
+  border: 2px solid var(--panel-soft-border);
+  border-radius: 8px;
+  min-height: 84px;
+  padding: 14px 12px;
+  background: var(--panel-bg);
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+  transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-mode-btn:hover {
+  background: var(--panel-hover);
+  transform: translateY(-1px);
+}
+
+.theme-mode-btn.active {
+  border-color: var(--theme-btn-active);
+  box-shadow: inset 0 0 0 1px var(--theme-btn-active);
+}
+
+.boot-panel {
+  background: var(--boot-panel-bg) !important;
+  border-color: var(--boot-panel-border) !important;
+  color: var(--boot-text);
+}
+
+#boot-screen {
+  background: var(--boot-screen-bg) !important;
+  color: var(--boot-text) !important;
+}
+
+#boot-screen .text-green-300 {
+  color: var(--boot-kicker) !important;
+}
+
+#boot-screen .bg-slate-900 {
+  background: rgba(15, 23, 42, 0.85) !important;
+}
+
 .boot-progress-bar {
-  background: linear-gradient(90deg, #22c55e, #06b6d4);
+  background: var(--boot-progress-bg);
   transition: width 0.2s ease;
+}
+
+#login-screen {
+  background: var(--login-screen-bg) !important;
+}
+
+.login-card {
+  background: var(--login-card-bg) !important;
+  border-color: var(--login-card-border) !important;
+}
+
+.login-card h1 {
+  color: var(--login-title) !important;
+}
+
+.login-card .bg-pink-500 {
+  background: var(--login-accent) !important;
+}
+
+#login-button {
+  background: var(--login-button-bg) !important;
+}
+
+#login-button:hover {
+  background: var(--login-button-hover) !important;
 }
 
 @media (max-width: 768px) {
@@ -256,6 +518,7 @@ body {
   }
 
   .start-menu-apps,
+  .theme-mode-buttons,
   .start-menu-actions {
     grid-template-columns: 1fr;
   }

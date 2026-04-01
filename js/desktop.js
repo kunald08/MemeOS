@@ -4,7 +4,8 @@ window.MemeOS = {
     state: {
         quarantinedThreats: new Set(),
         lastWindowPosition: { top: 5, left: 20 },
-        windowOffset: 30
+        windowOffset: 30,
+        activeTheme: 'classic'
     }
 };
 
@@ -16,7 +17,28 @@ const startMenu = document.getElementById('start-menu');
 const startMenuApps = document.getElementById('start-menu-apps');
 const startMenuClose = document.getElementById('start-menu-close');
 const taskbarClock = document.getElementById('taskbar-clock');
+const themeModeButtons = document.getElementById('theme-mode-buttons');
 let zIndexCounter = 10;
+
+const THEME_LABELS = {
+  classic: 'Classic MemeOS',
+  'exam-panic': 'Exam Panic Mode',
+  chaos: 'Chaos Mode',
+  'night-grind': 'Night Grind Mode',
+};
+
+function applyTheme(themeName = 'classic') {
+  const safeTheme = THEME_LABELS[themeName] ? themeName : 'classic';
+  document.body.dataset.theme = safeTheme;
+  window.MemeOS.state.activeTheme = safeTheme;
+  localStorage.setItem('memeos-theme', safeTheme);
+
+  document.querySelectorAll('.theme-mode-btn').forEach(button => {
+    button.classList.toggle('active', button.dataset.theme === safeTheme);
+  });
+}
+
+applyTheme(localStorage.getItem('memeos-theme') || 'classic');
 
 function openApp(app, params = {}) {
   console.log(`[Desktop] Attempting to open app: "${app}"`);
@@ -236,6 +258,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startMenu?.addEventListener('click', (event) => {
       event.stopPropagation();
+    });
+
+    themeModeButtons?.querySelectorAll('.theme-mode-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const theme = button.dataset.theme || 'classic';
+        applyTheme(theme);
+        showDesktopNotification('Theme Changed', `${THEME_LABELS[theme] || 'Classic MemeOS'} enabled.`);
+      });
     });
 
     document.querySelectorAll('.start-action-btn').forEach(button => {
