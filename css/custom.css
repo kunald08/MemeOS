@@ -250,12 +250,6 @@ body {
   transition: width 0.2s ease;
 }
 
-.login-card {
-  background:
-    linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(2, 6, 23, 0.94)),
-    radial-gradient(circle at top, rgba(34, 211, 238, 0.18), transparent 38%);
-}
-
 @media (max-width: 768px) {
   #desktop-icons {
     gap: 14px;

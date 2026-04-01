@@ -9,20 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const loginHint = document.getElementById('login-hint');
 
   const bootLines = [
-    '[ OK ] Mounting cursed meme partitions',
-    '[ OK ] Syncing terminal sarcasm engine',
-    '[ OK ] Checking taskbar emotional stability',
-    '[WARN] Based meter calibration drifting toward chaos',
-    '[ OK ] Loading premium nonsense drivers',
-    '[ OK ] Connecting to local rizz fabric',
-    '[ OK ] Boot sequence complete. Damage acceptable',
+    'Checking meme reserves.............OK',
+    'Loading skibidi defense layer......OK',
+    'Starting rizz calibration..........OK',
+    'Warning: cringe levels unstable',
+    'Loading desktop nonsense...........OK',
+    'Summoning taskbar..................OK',
+    'System ready. Consequences pending',
   ];
 
   let lineIndex = 0;
   let progress = 0;
 
   function finishBoot() {
-    bootStatus.textContent = 'Boot complete. Handing control to user...';
+    bootStatus.textContent = 'Boot complete. Preparing suspicious login screen...';
     setTimeout(() => {
       bootScreen.classList.add('hidden');
       loginScreen.classList.remove('hidden');
@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 360);
 
   const hints = [
-    'Password check disabled. Confidence check enabled.',
-    'Hint: literally anything works. MemeOS trusts vibes.',
-    'Security level: dramatic, not practical.',
-    'This login is here for cinema.',
+    'Password check disabled. Vibe check enabled.',
+    'Hint: literally anything works.',
+    'Security level: fake but loud.',
+    'This login exists for meme reasons.',
   ];
 
   function enterDesktop() {
