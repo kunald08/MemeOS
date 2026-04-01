@@ -17,6 +17,34 @@
 </head>
 
 <body class="bg-cover bg-center" style="background-image: url('js/memeos-desktopbg.jpg')">
+    <div id="boot-screen" class="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950 text-green-400">
+        <div class="boot-panel w-[92%] max-w-3xl rounded-xl border border-green-500/40 bg-black/80 p-6 font-mono shadow-2xl">
+            <div class="mb-4 flex items-center justify-between text-xs uppercase tracking-[0.35em] text-green-300">
+                <span>MemeOS Firmware</span>
+                <span>Build Kunald08</span>
+            </div>
+            <pre id="boot-log" class="boot-log mb-5 h-64 overflow-hidden whitespace-pre-wrap text-sm leading-6"></pre>
+            <div class="boot-progress-shell h-4 overflow-hidden rounded-full border border-green-500/40 bg-slate-900">
+                <div id="boot-progress-bar" class="boot-progress-bar h-full w-0"></div>
+            </div>
+            <p id="boot-status" class="mt-3 text-xs uppercase tracking-[0.3em] text-green-300">Powering on chaos engine...</p>
+        </div>
+    </div>
+
+    <div id="login-screen" class="hidden fixed inset-0 z-[9998] items-center justify-center bg-black/75 backdrop-blur-sm">
+        <div class="login-card w-[92%] max-w-md rounded-[28px] border border-white/15 bg-slate-950/90 p-8 text-center text-white shadow-2xl">
+            <div class="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-4 border-cyan-400 bg-gradient-to-br from-cyan-500 to-fuchsia-500 text-3xl font-bold shadow-lg shadow-cyan-500/30">
+                K
+            </div>
+            <p class="mb-2 text-xs uppercase tracking-[0.45em] text-cyan-300">Welcome Back</p>
+            <h1 class="mb-1 text-3xl font-black tracking-wide">Kunald08</h1>
+            <p class="mb-6 text-sm text-slate-300">MemeOS is ready. Try not to break reality before lunch.</p>
+            <input id="login-password" type="password" placeholder="Password (totally secure)" class="mb-3 w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-center text-white outline-none transition focus:border-cyan-400">
+            <p id="login-hint" class="mb-5 min-h-6 text-sm text-amber-300">Hint: the login button is mostly decorative.</p>
+            <button id="login-button" class="w-full rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-fuchsia-500 px-4 py-3 font-bold text-slate-950 transition hover:scale-[1.02]">Enter MemeOS</button>
+        </div>
+    </div>
+
     <!-- Desktop Area -->
     <div id="desktop" class="w-screen h-screen overflow-hidden relative select-none">
         <div id="desktop-icons">
@@ -85,6 +113,11 @@
                 <span>BasedMeter</span>
             </div>
 
+            <div class="desktop-icon" id="icon-memegpt" data-app="memeGPT">
+                <img src="js/apps/memegpt-icon.svg" alt="MemeGPT">
+                <span>MemeGPT</span>
+            </div>
+
             <div class="desktop-icon" data-app="rick-morty-dimension">
                 <img src="js/apps/rickandmorty-icon.png" alt="Rick & Morty Dimension">
                 <span>Rick & Morty</span>
@@ -99,7 +132,34 @@
 
     <!-- Taskbar -->
     <div id="taskbar"
-        class="fixed bottom-0 left-0 right-0 h-10 bg-black bg-opacity-60 flex items-center px-2 space-x-2 text-white text-sm">
+        class="fixed bottom-0 left-0 right-0 h-12 bg-black bg-opacity-65 flex items-center px-2 space-x-2 text-white text-sm">
+        <button id="start-button" class="start-button h-9 rounded-lg px-4 font-bold tracking-wide text-white">Start</button>
+        <div id="taskbar-apps" class="flex min-w-0 flex-1 items-center gap-2 overflow-x-auto"></div>
+        <div id="taskbar-clock" class="min-w-[88px] text-right text-xs text-slate-200"></div>
+    </div>
+
+    <div id="start-menu" class="start-menu hidden">
+        <div class="start-menu-header">
+            <div>
+                <p class="start-menu-kicker">MemeOS Launcher</p>
+                <h2>Welcome, Kunald08</h2>
+            </div>
+            <button id="start-menu-close" class="start-menu-close" aria-label="Close start menu">×</button>
+        </div>
+        <div class="start-menu-body">
+            <div class="start-menu-section">
+                <p class="start-menu-section-title">Pinned Chaos</p>
+                <div id="start-menu-apps" class="start-menu-apps"></div>
+            </div>
+            <div class="start-menu-section">
+                <p class="start-menu-section-title">Quick Actions</p>
+                <div class="start-menu-actions">
+                    <button class="start-action-btn" data-start-action="lock">Lock MemeOS</button>
+                    <button class="start-action-btn" data-start-action="reboot">Fake Reboot</button>
+                    <button class="start-action-btn" data-start-action="chaos">Summon Chaos</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- App Scripts -->
@@ -117,6 +177,7 @@
     <script src="js/apps/passwordSpinner.js"></script>
     <script src="js/apps/amongUsSus.js"></script>
     <script src="js/apps/basedMeter.js"></script>
+    <script src="js/apps/memeGPT.js"></script>
     <script src="js/apps/rickMortyDimension.js"></script>
     <script src="js/apps/nyanFlyer.js"></script>
     <script src="js/terminal.js"></script>
@@ -124,6 +185,7 @@
     <script src="js/bsod.js"></script>
     <script src="js/contextMenu.js"></script>
     <script src="js/desktop.js"></script>
+    <script src="js/boot.js"></script>
     <script src="js/shibaMusicPlayer.js"></script>
 </body>
 

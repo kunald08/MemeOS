@@ -10,6 +10,12 @@ window.MemeOS = {
 
 const desktop = document.getElementById('desktop');
 const taskbar = document.getElementById('taskbar');
+const taskbarApps = document.getElementById('taskbar-apps');
+const startButton = document.getElementById('start-button');
+const startMenu = document.getElementById('start-menu');
+const startMenuApps = document.getElementById('start-menu-apps');
+const startMenuClose = document.getElementById('start-menu-close');
+const taskbarClock = document.getElementById('taskbar-clock');
 let zIndexCounter = 10;
 
 function openApp(app, params = {}) {
@@ -70,11 +76,19 @@ function openApp(app, params = {}) {
 
 function taskbarAdd(app, win) {
   const btn = document.createElement('button');
-  btn.textContent = app;
-  btn.className = 'px-2 py-1 bg-gray-800 hover:bg-gray-700 rounded';
-  btn.onclick = () => focusWindow(win);
+  const label = window.apps?.[app]?.name || app;
+  btn.textContent = label;
+  btn.className = 'taskbar-app-button px-3 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg';
+  btn.onclick = () => {
+    if (document.body.contains(win)) {
+      focusWindow(win);
+      hideStartMenu();
+      return;
+    }
+    btn.remove();
+  };
   win.addEventListener('close', () => btn.remove());
-  taskbar.appendChild(btn);
+  taskbarApps.appendChild(btn);
 }
 
 function focusWindow(win) {
@@ -118,9 +132,144 @@ desktop.addEventListener('mouseup', () => dragData = null);
 window.openApp = openApp;
 window.focusWindow = focusWindow;
 
+function hideStartMenu() {
+  if (!startMenu || !startButton) return;
+  startMenu.classList.add('hidden');
+  startButton.classList.remove('active');
+}
+
+function toggleStartMenu() {
+  if (!startMenu || !startButton) return;
+  const shouldShow = startMenu.classList.contains('hidden');
+  if (shouldShow) {
+    startMenu.classList.remove('hidden');
+    startButton.classList.add('active');
+  } else {
+    hideStartMenu();
+  }
+}
+
+function buildStartMenu() {
+  if (!startMenuApps) return;
+  const icons = Array.from(document.querySelectorAll('.desktop-icon[data-app]'));
+  const pinnedOrder = [
+    'terminal',
+    'barnacle-browser',
+    'memeGPT',
+    'taskManager',
+    'passwordSpinner',
+    'among-us-sus',
+    'rizzAI',
+    'basedMeter',
+  ];
+  const pinnedIcons = [
+    ...pinnedOrder
+      .map(app => icons.find(icon => icon.dataset.app === app))
+      .filter(Boolean),
+    ...icons.filter(icon => !pinnedOrder.includes(icon.dataset.app)),
+  ];
+  startMenuApps.innerHTML = '';
+
+  pinnedIcons.slice(0, 10).forEach(icon => {
+    const app = icon.dataset.app;
+    const label = icon.querySelector('span')?.textContent?.trim() || app;
+    const imgSrc = icon.querySelector('img')?.getAttribute('src') || '';
+    const button = document.createElement('button');
+    button.className = 'start-menu-app-item';
+    button.innerHTML = `
+      <img src="${imgSrc}" alt="${label}">
+      <div>
+        <strong>${label}</strong>
+        <span>Launch into chaos</span>
+      </div>
+    `;
+    button.addEventListener('click', () => {
+      openApp(app);
+      hideStartMenu();
+    });
+    startMenuApps.appendChild(button);
+  });
+}
+
+function updateClock() {
+  if (!taskbarClock) return;
+  const now = new Date();
+  taskbarClock.innerHTML = `
+    <div>${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+    <div class="text-[10px] text-slate-400">${now.toLocaleDateString()}</div>
+  `;
+}
+
+function showDesktopNotification(title, body) {
+  const note = document.createElement('div');
+  note.className = 'fixed right-4 bottom-16 z-[1300] w-[300px] rounded-2xl border border-cyan-400/20 bg-slate-950/95 p-4 text-white shadow-2xl';
+  note.innerHTML = `
+    <p class="text-xs uppercase tracking-[0.3em] text-cyan-300">${title}</p>
+    <p class="mt-2 text-sm text-slate-200">${body}</p>
+  `;
+  document.body.appendChild(note);
+
+  setTimeout(() => {
+    note.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+    note.style.opacity = '0';
+    note.style.transform = 'translateY(12px)';
+    setTimeout(() => note.remove(), 260);
+  }, 2600);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Desktop Icon Listeners
     document.querySelectorAll('.desktop-icon[data-app]').forEach(icon => {
         icon.onclick = () => openApp(icon.dataset.app);
     });
+
+    buildStartMenu();
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    startButton?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      toggleStartMenu();
+    });
+
+    startMenuClose?.addEventListener('click', hideStartMenu);
+
+    startMenu?.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    document.querySelectorAll('.start-action-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const action = button.dataset.startAction;
+        hideStartMenu();
+
+        if (action === 'lock') {
+          const loginScreen = document.getElementById('login-screen');
+          loginScreen?.classList.remove('hidden');
+          loginScreen?.classList.add('flex');
+          document.getElementById('login-password')?.focus();
+          return;
+        }
+
+        if (action === 'reboot') {
+          location.reload();
+          return;
+        }
+
+        if (action === 'chaos') {
+          showDesktopNotification('Chaos Activated', 'MemeOS has approved reckless productivity.');
+        }
+      });
+    });
+});
+
+document.addEventListener('click', hideStartMenu);
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    hideStartMenu();
+  }
+});
+
+document.addEventListener('memeos:login', () => {
+  showDesktopNotification('Session Ready', 'Welcome back to MemeOS. Stability remains optional.');
 });
