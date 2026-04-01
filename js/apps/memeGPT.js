@@ -1,22 +1,22 @@
 function createMemeGPTWindow() {
   const win = makeWindow('MemeGPT');
   win.classList.remove('w-96', 'h-64');
-  win.classList.add('w-[820px]', 'h-[560px]');
+  win.classList.add('w-[760px]', 'h-[520px]');
   win.dataset.app = 'memeGPT';
 
   const content = document.createElement('div');
-  content.className = 'content flex h-full flex-col bg-slate-950 text-white';
+  content.className = 'content flex h-full flex-col bg-gray-800 text-white font-mono';
 
   const header = document.createElement('div');
-  header.className = 'border-b border-cyan-500/20 bg-slate-900/80 p-4';
+  header.className = 'border-b border-gray-700 bg-gray-900 p-4';
   header.innerHTML = `
-    <p class="text-xs uppercase tracking-[0.35em] text-cyan-300">MemeOS Intelligence Layer</p>
+    <p class="text-xs uppercase tracking-[0.35em] text-green-400">Totally Real AI</p>
     <div class="mt-2 flex items-center justify-between gap-3">
       <div>
         <h2 class="text-2xl font-black text-white">MemeGPT</h2>
-        <p class="text-sm text-slate-300">Half oracle, half chaos goblin, fully unqualified.</p>
+        <p class="text-sm text-gray-300">Fake intelligence. Real confidence. Zero accountability.</p>
       </div>
-      <select id="memegpt-mode" class="rounded-lg border border-white/10 bg-slate-950 px-3 py-2 text-sm text-white outline-none">
+      <select id="memegpt-mode" class="rounded border border-gray-600 bg-black px-3 py-2 text-sm text-white outline-none">
         <option value="chaos">Chaos Mode</option>
         <option value="study">Exam Panic</option>
         <option value="coder">Code Roast</option>
@@ -27,19 +27,31 @@ function createMemeGPTWindow() {
 
   const chat = document.createElement('div');
   chat.id = 'memegpt-chat';
-  chat.className = 'flex-1 space-y-3 overflow-y-auto bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.12),_transparent_36%)] p-4';
+  chat.className = 'flex-1 space-y-3 overflow-y-auto bg-gray-800 p-4';
+
+  const suggestions = document.createElement('div');
+  suggestions.className = 'border-b border-gray-700 bg-gray-900/60 px-4 py-3';
+  suggestions.innerHTML = `
+    <div class="flex flex-wrap gap-2">
+      <button class="memegpt-prompt px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded" data-prompt="how do i survive exams">survive exams</button>
+      <button class="memegpt-prompt px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded" data-prompt="rate my code">rate my code</button>
+      <button class="memegpt-prompt px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded" data-prompt="give me rizz advice">rizz advice</button>
+      <button class="memegpt-prompt px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded" data-prompt="startup idea please">startup idea</button>
+    </div>
+  `;
 
   const composer = document.createElement('form');
-  composer.className = 'border-t border-white/10 bg-slate-900/90 p-4';
+  composer.className = 'border-t border-gray-700 bg-gray-900 p-4';
   composer.innerHTML = `
     <div class="flex gap-3">
-      <input id="memegpt-input" class="flex-1 rounded-xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-cyan-400" placeholder="Ask MemeGPT something cursed..." />
-      <button class="rounded-xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 px-5 py-3 font-bold text-slate-950">Send</button>
+      <input id="memegpt-input" class="flex-1 rounded border border-gray-600 bg-black px-4 py-3 text-white outline-none" placeholder="Ask MemeGPT something cursed..." />
+      <button class="rounded border border-white bg-lime-400 px-5 py-3 font-bold text-black">Send</button>
     </div>
-    <p class="mt-2 text-xs text-slate-400">Try: "how to survive exams", "rate my code", "give me a startup idea", "help me rizz".</p>
+    <p class="mt-2 text-xs text-gray-400">Warning: replies may contain overconfidence, misinformation, and unnecessary sigma energy.</p>
   `;
 
   content.appendChild(header);
+  content.appendChild(suggestions);
   content.appendChild(chat);
   content.appendChild(composer);
   win.appendChild(content);
@@ -50,8 +62,8 @@ function createMemeGPTWindow() {
   function appendBubble(role, text) {
     const bubble = document.createElement('div');
     bubble.className = role === 'user'
-      ? 'ml-auto max-w-[78%] rounded-2xl rounded-br-md bg-cyan-500/20 px-4 py-3 text-sm text-cyan-50'
-      : 'max-w-[82%] rounded-2xl rounded-bl-md border border-fuchsia-400/20 bg-slate-900/95 px-4 py-3 text-sm text-slate-100 shadow-lg shadow-fuchsia-500/5';
+      ? 'ml-auto max-w-[78%] rounded border border-cyan-600 bg-cyan-950/40 px-4 py-3 text-sm text-cyan-50'
+      : 'max-w-[82%] rounded border border-gray-600 bg-black/70 px-4 py-3 text-sm text-gray-100';
     bubble.innerHTML = text;
     chat.appendChild(bubble);
     chat.scrollTop = chat.scrollHeight;
@@ -84,13 +96,13 @@ function createMemeGPTWindow() {
     };
 
     if (normalized.includes('exam') || normalized.includes('study')) {
-      return `Emergency academic briefing: focus on the <strong>high-weightage topics</strong>, stop decorating notes, and remember that caffeine is not a substitute for revision.`;
+      return `Exam briefing: study the high-weightage topics, stop making aesthetic notes, and remember that panic is not a revision strategy.`;
     }
     if (normalized.includes('rizz')) {
-      return `Rizz protocol loaded: be funny, be normal, and under no circumstances open with "hey queen, are you Wi-Fi?" unless your goal is failure.`;
+      return `Rizz protocol loaded: be funny, be normal, and never say "are you Wi-Fi?" unless failure is the mission.`;
     }
     if (normalized.includes('bug') || normalized.includes('code')) {
-      return `Debugging mantra: reproduce it, isolate it, fix it, and only then post "light work" in the group chat.`;
+      return `Debugging mantra: reproduce it, isolate it, fix it, and only then type "light work" in the group chat.`;
     }
     if (normalized.includes('startup')) {
       return `Startup idea: <strong>Rent-A-Excuse</strong>. AI-generated explanations for missed deadlines, low attendance, and emotionally unavailable group members. Unicorn by accident.`;
@@ -100,7 +112,7 @@ function createMemeGPTWindow() {
     return pool[Math.floor(Math.random() * pool.length)];
   }
 
-  appendBubble('assistant', 'MemeGPT online. Ask anything. Judgment is enabled by default.');
+  appendBubble('assistant', 'MemeGPT online. Judgment enabled. Accuracy not guaranteed.');
 
   composer.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -111,8 +123,8 @@ function createMemeGPTWindow() {
     input.value = '';
 
     const thinking = document.createElement('div');
-    thinking.className = 'max-w-[60%] rounded-2xl rounded-bl-md border border-white/10 bg-slate-900 px-4 py-3 text-sm text-slate-400';
-    thinking.textContent = 'MemeGPT is consulting the council of chaos...';
+    thinking.className = 'max-w-[60%] rounded border border-gray-600 bg-black/70 px-4 py-3 text-sm text-gray-400';
+    thinking.textContent = 'MemeGPT is pretending to think...';
     chat.appendChild(thinking);
     chat.scrollTop = chat.scrollHeight;
 
@@ -120,6 +132,13 @@ function createMemeGPTWindow() {
       thinking.remove();
       appendBubble('assistant', getReply(prompt, modeSelect.value));
     }, 450);
+  });
+
+  suggestions.querySelectorAll('.memegpt-prompt').forEach(button => {
+    button.addEventListener('click', () => {
+      input.value = button.dataset.prompt || '';
+      input.focus();
+    });
   });
 
   setTimeout(() => input.focus(), 0);
