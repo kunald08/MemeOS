@@ -116,6 +116,7 @@ desktop.addEventListener('mouseup', () => dragData = null);
 
 // Expose globally for other modules and add listeners for desktop icons
 window.openApp = openApp;
+window.focusWindow = focusWindow;
 
 document.addEventListener('DOMContentLoaded', () => {
     // Desktop Icon Listeners
