@@ -91,6 +91,7 @@ body {
 #taskbar {
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.65);
 }
 
 #taskbar-apps::-webkit-scrollbar {
@@ -102,13 +103,14 @@ body {
 }
 
 .start-button {
-  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
-  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  background: linear-gradient(180deg, #374151, #111827);
 }
 
 .start-button:hover,
 .start-button.active {
-  filter: brightness(1.08);
+  background: linear-gradient(180deg, #4b5563, #1f2937);
 }
 
 .taskbar-app-button {
@@ -116,6 +118,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .start-menu {
@@ -124,14 +127,12 @@ body {
   bottom: 58px;
   width: min(420px, calc(100vw - 24px));
   z-index: 1200;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(2, 6, 23, 0.97)),
-    radial-gradient(circle at top left, rgba(34, 211, 238, 0.18), transparent 40%);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(17, 24, 39, 0.97);
   color: white;
-  box-shadow: 0 24px 70px rgba(2, 6, 23, 0.58);
-  backdrop-filter: blur(18px);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
 }
 
 .start-menu-header {
@@ -153,16 +154,16 @@ body {
 
 .start-menu-header h2 {
   margin: 6px 0 0;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 900;
 }
 
 .start-menu-close {
   width: 38px;
   height: 38px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(148, 163, 184, 0.16);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  background: rgba(31, 41, 55, 0.9);
   color: white;
   font-size: 28px;
   cursor: pointer;
@@ -189,9 +190,9 @@ body {
   gap: 12px;
   width: 100%;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  background: rgba(15, 23, 42, 0.75);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(31, 41, 55, 0.9);
   color: white;
   cursor: pointer;
   transition: transform 0.15s ease, background 0.15s ease;
@@ -199,8 +200,7 @@ body {
 
 .start-menu-app-item:hover,
 .start-action-btn:hover {
-  transform: translateY(-1px);
-  background: rgba(30, 41, 59, 0.95);
+  background: rgba(55, 65, 81, 0.95);
 }
 
 .start-menu-app-item img {
@@ -231,10 +231,10 @@ body {
 }
 
 .start-action-btn {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
   padding: 14px 10px;
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(31, 41, 55, 0.9);
   color: white;
   cursor: pointer;
   text-align: left;

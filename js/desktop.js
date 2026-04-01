@@ -78,7 +78,7 @@ function taskbarAdd(app, win) {
   const btn = document.createElement('button');
   const label = window.apps?.[app]?.name || app;
   btn.textContent = label;
-  btn.className = 'taskbar-app-button px-3 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg';
+  btn.className = 'taskbar-app-button px-3 py-2 bg-gray-800 hover:bg-gray-700 rounded';
   btn.onclick = () => {
     if (document.body.contains(win)) {
       focusWindow(win);
@@ -180,7 +180,7 @@ function buildStartMenu() {
       <img src="${imgSrc}" alt="${label}">
       <div>
         <strong>${label}</strong>
-        <span>Launch into chaos</span>
+        <span>probably safe</span>
       </div>
     `;
     button.addEventListener('click', () => {
@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (action === 'chaos') {
-          showDesktopNotification('Chaos Activated', 'MemeOS has approved reckless productivity.');
+          showDesktopNotification('Chaos Activated', 'System mood changed from normal to questionable.');
         }
       });
     });
@@ -271,5 +271,5 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.addEventListener('memeos:login', () => {
-  showDesktopNotification('Session Ready', 'Welcome back to MemeOS. Stability remains optional.');
+  showDesktopNotification('Session Ready', 'MemeOS booted successfully. That feels suspicious.');
 });
